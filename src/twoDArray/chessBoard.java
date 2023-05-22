@@ -1,5 +1,5 @@
 package twoDArray;
-
+import java.io.*;
 /**
  * @javaDoc
  standard input/output: 2s/128000 kB
@@ -51,6 +51,57 @@ Output:
 0
  */
 public class chessBoard {
+ public static void main (String[] args) throws IOException{
+  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+  int n = Integer.parseInt(br.readLine());
+
+  String[] a = new String[n];
+
+  for(int i=0; i<n; i++){
+
+   a[i] = br.readLine();
+
+  }
+
+  int initial = 0;
+  int countForZero = 0;
+  int countForOne = 0;
+
+  // count when it should be start from zero
+  for(int i=0; i<n; i++){
+   int curr = initial;
+   for(int j=0; j< a[i].length(); j=j+2){
+    int val = a[i].charAt(j)-48;
+    if(val != curr){
+     countForZero++;
+    }
+    curr = 1-curr;
+   }
+   initial = 1-initial;
+  }
+
+
+  // count when it should be start from one
+  initial = 1;
+  for(int i=0; i<n; i++){
+   int curr = initial;
+   for(int j=0; j<a[i].length(); j=j+2){
+    int val = a[i].charAt(j)-48;
+    if(val != curr){
+     countForOne++;
+    }
+    curr = 1-curr;
+   }
+   initial = 1-initial;
+  }
+  System.out.println(Math.min(countForZero,countForOne));
+
+
+
+
+
+
+ }
 
 }

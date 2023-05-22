@@ -1,3 +1,5 @@
+package Tree;
+
 import java.util.*;
 public class TreeInOrder {
     public static class tree {
